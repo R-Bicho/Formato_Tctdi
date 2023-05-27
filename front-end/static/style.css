@@ -1,0 +1,45 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.cabecalho{
+    text-align: center;
+    margin: 1%;      
+}
+body{
+    max-width: 100%;
+}
+
+main{
+    padding: 4rem; 
+    margin-bottom: 20%;   
+}
+
+.posicionamento{
+    display: flex;   
+    justify-content:space-between;  
+    flex-wrap: wrap; 
+    margin-bottom: 1%;
+}
+
+.posicionamento__filho{
+    padding: 1.1rem;
+    text-align: center;
+}
+
+.tamanho__input{
+    width: 11.5rem;
+}
+
+.estilo__titulo{
+    font-size: 30px;
+}
+
+.retorno{
+    margin-top: 3%;
+}
+
+footer{
+    text-align: center;
+}

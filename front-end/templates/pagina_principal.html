@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/front-end/static/style.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <img src="/front-end/static/imagens/Logo.png" alt="logo da TIM">
+    </header>
+    <main>
+
+        <div class="ajuste__texto">
+            <h1 class="estilo__titulo">Formato TCTDI</h1>
+            <p>Para cliente pré-pago é necessário utilizar o comando xxxxxxxx para encontrar o BO
+            </p>
+        </div>
+
+        <form action="" method="post">
+
+            <div class="posicionamento">
+                <div>
+                    <br>
+                    <p>Categoria da Origem</p>
+                    <input type="radio" id="pre" name="valor" value="pre">
+                    <label for="pre">Pré-Pago</label><br>
+                    <input type="radio" id="pos" name="valor" value="pos">
+                    <label for="pos">Pós-Pago</label>
+                    <br>
+                </div>
+
+                <div class="posicionamento__filho">
+                    <div>
+                        <label for="numeroA">Numero de A </label>
+                    </div>
+                    <input class="tamanho__input" type="tel" id="numeroA" name="numeroA"
+                        placeholder="11 99999-9999 / 11 9999-9999" />
+                </div>
+
+                <div class="posicionamento__filho">
+                    <div>
+                        <label for="numeroB">Numero de B </label>
+                    </div>
+                    <input class="tamanho__input" type="tel" id="numeroB" placeholder="11 99999-9999 / 11 9999-9999" />
+                </div>
+
+                <div class="posicionamento__filho">
+                    <div>
+                        <label for="ea">DDD Registrado </label>
+                    </div>
+                    <input class="tamanho__input" type="tel" id="ea" />
+                </div>
+
+                <div hidden="False">
+                    <br>
+                    <label for="BO">BO: </label>
+                    <select id="BO">
+                        <option value="376">376</option>
+                        <option value="476">476</option>
+                    </select>
+                    <br>
+                </div>
+
+                <div hidden="False">
+                    <div>
+                        <label for="rn">RN de B </label>
+                    </div>
+                    <input type="tel" id="rn" />
+                </div>
+
+                <div hidden="False">
+                    <div>
+                        <label for="rop">ROP de A </label>
+                    </div>
+                    <input type="tel" id="rop" />
+                </div>
+            </div>                     
+                
+            <div>
+                <input type="reset" value="Reset">
+                <input type="submit" value="Enviar">
+            </div>
+
+            <div class="retorno">                
+                <p>Resultado</p>
+            </div>
+        </form>
+    </main>
+    <footer>&copy;Rogério Bicho</footer>
+
+</body>
+
+</html>
