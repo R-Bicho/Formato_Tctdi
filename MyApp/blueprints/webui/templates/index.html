@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/front-end/static/style.css">
-    <title>Home</title>
+    <link rel="stylesheet" href="/MyApp/blueprints/web/static/style.css">
+    <title>{{titulo}}</title>
 </head>
 
 <body>
     <header class="cabecalho">
-        <img src="/front-end/static/imagens/Logo.png" alt="logo da TIM">
+        <img src="/MyApp/blueprints/web/static/imagens/Logo.png" alt="logo da TIM">
     </header>
     <main>
 
@@ -28,9 +28,13 @@
                     <br>
                     <p>Categoria da Origem</p>
                     <input type="radio" id="pre" name="valor" value="pre">
-                    <label for="pre">Pré-Pago</label><br>
+                    <label for="pre">Pré-Pago</label>
+                    <br>
                     <input type="radio" id="pos" name="valor" value="pos">
                     <label for="pos">Pós-Pago</label>
+                    <br>
+                    <input type="radio" id="fixo" name="valor" value="fixo">
+                    <label for="fixo">Fixo</label>
                     <br>
                 </div>
 
@@ -38,7 +42,7 @@
                     <div>
                         <label for="numeroA">Numero de A </label>
                     </div>
-                    <input class="tamanho__input" type="tel" id="numeroA" name="numeroA"
+                    <input class="tamanho__input" type="tel" id="numeroA" required name="numeroA"
                         placeholder="11 99999-9999 / 11 9999-9999" />
                 </div>
 
@@ -46,17 +50,17 @@
                     <div>
                         <label for="numeroB">Numero de B </label>
                     </div>
-                    <input class="tamanho__input" type="tel" id="numeroB" placeholder="11 99999-9999 / 11 9999-9999" />
+                    <input class="tamanho__input" type="tel" id="numeroB" required placeholder="11 99999-9999 / 11 9999-9999" />
                 </div>
 
                 <div class="posicionamento__filho">
                     <div>
                         <label for="ea">DDD Registrado </label>
                     </div>
-                    <input class="tamanho__input" type="tel" id="ea" />
+                    <input class="tamanho__input__menor" type="tel" id="ea" />
                 </div>
 
-                <div hidden="False">
+                <div class="posicionamento__filho">
                     <br>
                     <label for="BO">BO: </label>
                     <select id="BO">
@@ -66,18 +70,18 @@
                     <br>
                 </div>
 
-                <div hidden="False">
+                <div class="posicionamento__filho">
                     <div>
                         <label for="rn">RN de B </label>
                     </div>
-                    <input type="tel" id="rn" />
+                    <input class="tamanho__input__menor" type="tel" id="rn" />
                 </div>
 
-                <div hidden="False">
+                <div class="posicionamento__filho">
                     <div>
                         <label for="rop">ROP de A </label>
                     </div>
-                    <input type="tel" id="rop" />
+                    <input class="tamanho__input__menor" type="tel" id="rop" />
                 </div>
             </div>                     
                 

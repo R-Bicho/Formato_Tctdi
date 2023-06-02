@@ -1,0 +1,14 @@
+/venv
+__pycache__
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+
+

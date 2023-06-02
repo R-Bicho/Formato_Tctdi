@@ -18,9 +18,9 @@ main{
 
 .posicionamento{
     display: flex;   
-    justify-content:space-between;  
+    justify-content:space-around;  
     flex-wrap: wrap; 
-    margin-bottom: 1%;
+    margin-bottom: 1%;    
 }
 
 .posicionamento__filho{
@@ -29,9 +29,14 @@ main{
 }
 
 .tamanho__input{
-    width: 11.5rem;
+    width: 12rem;
+    border-radius: 0.9rem;
 }
 
+.tamanho__input__menor{
+    width: 5rem;
+    border-radius: 0.9rem;
+}
 .estilo__titulo{
     font-size: 30px;
 }
