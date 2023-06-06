@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, render_template, request
 
-from blueprints.classes.tctdi import FormatoTctdi
+from blueprints.classes.factory import tctdiFactory
 
 bp_tctdi = Blueprint("tctdi", __name__, template_folder='templates')
 
@@ -18,6 +18,7 @@ def index():
 def validar():
 
     valores_formulario.clear()
+
     try:
         tipo_telefone = request.form['valor']
     except KeyError:
@@ -59,7 +60,7 @@ def validar():
 
 @bp_tctdi.route('/resultado')
 def resultado():
-    resultado = FormatoTctdi(valores_formulario[0],
+    resultado = tctdiFactory.criaFormatoTctdi(valores_formulario[0],
                              valores_formulario[1],
                              valores_formulario[2],
                              valores_formulario[3],
@@ -67,5 +68,5 @@ def resultado():
                              valores_formulario[5])
 
     return render_template('index.html',
-                           Resultado=resultado.retorno_formato(),
-                           formulario=valores_formulario)
+                           Resultado=resultado,
+                           )
