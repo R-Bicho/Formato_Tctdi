@@ -1,4 +1,5 @@
 from flask import Flask
+
 from blueprints.views import bp_tctdi
 
 app = Flask(__name__)

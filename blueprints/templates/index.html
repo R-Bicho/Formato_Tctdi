@@ -21,7 +21,7 @@
             </p>
         </div>
 
-        <form action="" method="post">
+        <form action="/validar" method="post">
 
             <div class="posicionamento">
                 <div>
@@ -50,20 +50,21 @@
                     <div>
                         <label for="numeroB">Numero de B </label>
                     </div>
-                    <input class="tamanho__input" type="tel" id="numeroB" required placeholder="11 99999-9999 / 11 9999-9999" />
+                    <input class="tamanho__input" type="tel" id="numeroB" required name="numeroB"
+                        placeholder="11 99999-9999 / 11 9999-9999" />
                 </div>
 
                 <div class="posicionamento__filho">
                     <div>
                         <label for="ea">DDD Registrado </label>
                     </div>
-                    <input class="tamanho__input__menor" type="tel" id="ea" />
+                    <input class="tamanho__input__menor" type="tel" id="ea" name="ddd" />
                 </div>
 
                 <div class="posicionamento__filho">
                     <br>
                     <label for="BO">BO: </label>
-                    <select id="BO">
+                    <select id="BO" name="bo">
                         <option value="376">376</option>
                         <option value="476">476</option>
                     </select>
@@ -74,24 +75,25 @@
                     <div>
                         <label for="rn">RN de B </label>
                     </div>
-                    <input class="tamanho__input__menor" type="tel" id="rn" />
+                    <input class="tamanho__input__menor" type="tel" id="rn" name="rn" />
                 </div>
 
                 <div class="posicionamento__filho">
                     <div>
                         <label for="rop">ROP de A </label>
                     </div>
-                    <input class="tamanho__input__menor" type="tel" id="rop" />
+                    <input class="tamanho__input__menor" type="tel" id="rop" name="rop" />
                 </div>
-            </div>                     
-                
+            </div>
+
             <div>
                 <input type="reset" value="Reset">
                 <input type="submit" value="Enviar">
             </div>
 
-            <div class="retorno">                
-                <p>Resultado</p>
+            <div class="retorno">
+                <p>{{Resultado}}</p>
+                <p>{{formulario}}</p>
             </div>
         </form>
     </main>
