@@ -5,23 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href=" {{url_for('static', filename ='style.css')}}">
     <title>{{titulo}}</title>
 </head>
 
 <body>
     <header class="cabecalho">
-        <img src="/static/imagens/Logo.png" alt="logo da TIM">
+        <img src="{{url_for('static', filename ='Logo.png')}}" alt="logo da TIM">
     </header>
     <main>
 
         <div class="ajuste__texto">
             <h1 class="estilo__titulo">Formato TCTDI</h1>
-            <p>Para cliente pré-pago é necessário utilizar o comando xxxxxxxx para encontrar o BO
-            </p>
+            <p class="estilo__texto">{{texto}}</p>
+            <p class="estilo__texto">{{texto1}}</p>
+            <p class="estilo__texto">{{texto2}}</p>
         </div>
 
-        <form action="/validar" method="post">
+        <form id="form" action="/validar" method="post">
 
             <div class="posicionamento">
                 <div>
@@ -35,7 +36,7 @@
                     <br>
                     <input type="radio" id="fixo" name="valor" value="fixo">
                     <label for="fixo">Fixo</label>
-                    <br>
+                    <br>                    
                 </div>
 
                 <div class="posicionamento__filho">
@@ -43,7 +44,7 @@
                         <label for="numeroA">Numero de A </label>
                     </div>
                     <input class="tamanho__input" type="tel" id="numeroA" required name="numeroA"
-                        placeholder="11 99999-9999 / 11 9999-9999" />
+                        placeholder="11 99999-9999 / 11 9999-9999" />                    
                 </div>
 
                 <div class="posicionamento__filho">
@@ -58,7 +59,7 @@
                     <div>
                         <label for="ea">DDD Registrado </label>
                     </div>
-                    <input class="tamanho__input__menor" type="tel" id="ea" name="ddd" />
+                    <input class="tamanho__input__menor" type="tel" id="ea" name="ddd" placeholder="11" />                    
                 </div>
 
                 <div class="posicionamento__filho">
@@ -75,14 +76,14 @@
                     <div>
                         <label for="rn">RN de B </label>
                     </div>
-                    <input class="tamanho__input__menor" type="tel" id="rn" name="rn" />
+                    <input class="tamanho__input__menor" type="tel" id="rn" name="rn" placeholder="AA123"/>                    
                 </div>
 
                 <div class="posicionamento__filho">
                     <div>
                         <label for="rop">ROP de A </label>
                     </div>
-                    <input class="tamanho__input__menor" type="tel" id="rop" name="rop" />
+                    <input class="tamanho__input__menor" type="tel" id="rop" name="rop" placeholder="00000" />                    
                 </div>
             </div>
 
@@ -97,7 +98,7 @@
         </form>
     </main>
     <footer>&copy;Rogério Bicho</footer>
-
+    
 </body>
 
 </html>

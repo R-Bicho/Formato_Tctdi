@@ -5,13 +5,26 @@ from blueprints.classes.factory import tctdiFactory
 bp_tctdi = Blueprint("tctdi", __name__, template_folder='templates')
 
 valores_formulario = []
-
+titulo = 'Home'
+Explicacao_geral = 'Para cliente pré-pago é necessário utilizar \
+    o comando xxxxxxxx para encontrar o BO e selecionar, após isso\
+    deve selecionar opção correspondente no campo BO, \
+    se o numero for pós-pago ou fixo não precisa selecionar'
+Explicacao_ddd = 'Necessário preencher o campo DDD registrado \
+    se o numero de origem estiver em um DDD diferente do nativo \
+    (Ex: Numero origem 11999999999 porém registrado DDD 12) \
+    caso contrário, pode deixar em branco'
+Explicacao_rn_rop = 'Os campos RN e ROP só precisam ser preenchidos em numeros fixos'
 
 @bp_tctdi.route("/")
 def index():
-    titulo = 'Home'
+    
 
-    return render_template('index.html', titulo=titulo)
+    return render_template('index.html', 
+                           titulo = titulo,
+                           texto = Explicacao_geral,
+                           texto1 = Explicacao_ddd,
+                           texto2 = Explicacao_rn_rop)
 
 
 @bp_tctdi.route('/validar', methods=['POST', ])
@@ -19,19 +32,18 @@ def validar():
 
     valores_formulario.clear()
 
+
     try:
         tipo_telefone = request.form['valor']
     except KeyError:
-        return render_template('index.html',
-                               Resultado='Selecione um valor no campo \
-                                Categoria Origem')
+        return redirect('/')
 
     numeroA = request.form['numeroA']
 
     if tipo_telefone == "fixo" and len(numeroA) > 10:
-        return render_template('index.html',
-                               Resultado='Digite um numero fixo válido')
-
+        return redirect('/')
+    
+    
     numeroB = request.form['numeroB']
     ddd_registrado = request.form['ddd']
     bo = request.form['bo']
@@ -69,4 +81,7 @@ def resultado():
 
     return render_template('index.html',
                            Resultado=resultado,
+                           texto = Explicacao_geral,
+                           texto1 = Explicacao_ddd,
+                           texto2 = Explicacao_rn_rop
                            )
