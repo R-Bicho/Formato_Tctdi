@@ -5,4 +5,5 @@ from blueprints.views import bp_tctdi
 app = Flask(__name__)
 app.register_blueprint(bp_tctdi)
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
