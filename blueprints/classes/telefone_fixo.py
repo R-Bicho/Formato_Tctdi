@@ -26,11 +26,14 @@ class telefoneFixo(validacao):
         #  Compara o DDD da origem com o DDD do destino
         prefixo_A_igual_B = self.telefoneA[0:2] == self.telefoneB[0:2]
 
+        if self.bo != '445':
+            return 'Selecione o campo de fixo em categoria origem'
+
         if validacao_rn is False or validacao_rop is False:
             return 'Verifique RN/ROP'
 
         if self.ddd_registrado != '':
-            return 'Cliente não pode usar fora da Home Zone'     
+            return 'Cliente não pode usar fora da Home Zone'
 
         if self.ddd_registrado == '' and prefixo_A_igual_B is True:
             #  Campo ddd_registrado em branco e A é igual ao de B, chamada local
@@ -40,7 +43,5 @@ class telefoneFixo(validacao):
             #  Campo ddd_registrado em branco e o DDD de A é diferente do de B, chamada LD
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={rn_valido} {self.rop} 041{Telefone_validoB}, ea={Telefone_validoA[0:2]}, cl=1, tmr=0;'
 
-           
-    
     def __str__(self) -> str:
         return self.TctdiFixo()
