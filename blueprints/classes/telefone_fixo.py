@@ -1,5 +1,6 @@
 from blueprints.classes.validacao import validacao
 
+
 class telefoneFixo(validacao):
 
     def __init__(self, telefoneA='', telefoneB='', ddd_registrado='', bo='', rn='', rop=''):
@@ -28,6 +29,9 @@ class telefoneFixo(validacao):
         if validacao_rn is False or validacao_rop is False:
             return 'Verifique RN/ROP'
 
+        if self.ddd_registrado != '':
+            return 'Cliente não pode usar fora da Home Zone'     
+
         if self.ddd_registrado == '' and prefixo_A_igual_B is True:
             #  Campo ddd_registrado em branco e A é igual ao de B, chamada local
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={rn_valido} {self.rop} {Telefone_validoB[2:]}, ea={Telefone_validoA[0:2]}, cl=1, tmr=0;'
@@ -36,16 +40,7 @@ class telefoneFixo(validacao):
             #  Campo ddd_registrado em branco e o DDD de A é diferente do de B, chamada LD
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={rn_valido} {self.rop} 041{Telefone_validoB}, ea={Telefone_validoA[0:2]}, cl=1, tmr=0;'
 
-        if self.ddd_registrado != '' and prefixo_A_igual_B is True and (self.ddd_registrado == self.telefoneA[0:2]):
-            #  Campo ddd_registrado preenchido e valor digitado é igual ao DDD
-            #  cadastrado da origem, chamada local
-            return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={rn_valido} {self.rop} {Telefone_validoB[2:]}, ea={Telefone_validoA[0:2]}, cl=1, tmr=0;'
-
-        if self.ddd_registrado != '' and prefixo_A_igual_B is True and (self.ddd_registrado != self.telefoneA[0:2]):
-            #  Campo ddd_registrado preenchido e o numero digitado é diferente
-            #  do DDD cadastrado, chamada é LD
-            return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={rn_valido} {self.rop} 041{self.ddd_registrado}{Telefone_validoB[2:]}, ea={self.ddd_registrado}, cl=1, tmr=0;'
-        return 'erro inesperado'
+           
     
     def __str__(self) -> str:
         return self.TctdiFixo()
