@@ -16,22 +16,21 @@ Explicacao_ddd = 'Necessário preencher o campo DDD registrado \
     caso contrário, pode deixar em branco'
 Explicacao_rn_rop = 'Os campos RN e ROP só precisam ser preenchidos em numeros fixos'
 
+
 @bp_tctdi.route("/")
 def index():
-    
 
-    return render_template('index.html', 
-                           titulo = titulo,
-                           texto = Explicacao_geral,
-                           texto1 = Explicacao_ddd,
-                           texto2 = Explicacao_rn_rop)
+    return render_template('index.html',
+                           titulo=titulo,
+                           texto=Explicacao_geral,
+                           texto1=Explicacao_ddd,
+                           texto2=Explicacao_rn_rop)
 
 
 @bp_tctdi.route('/validar', methods=['POST', ])
 def validar():
 
     valores_formulario.clear()
-
 
     try:
         tipo_telefone = request.form['valor']
@@ -42,8 +41,7 @@ def validar():
 
     if tipo_telefone == "fixo" and len(numeroA) > 10:
         return redirect('/')
-    
-    
+
     numeroB = request.form['numeroB']
     ddd_registrado = request.form['ddd']
     bo = request.form['bo']
@@ -73,15 +71,15 @@ def validar():
 @bp_tctdi.route('/resultado')
 def resultado():
     resultado = tctdiFactory.criaFormatoTctdi(valores_formulario[0],
-                             valores_formulario[1],
-                             valores_formulario[2],
-                             valores_formulario[3],
-                             valores_formulario[4],
-                             valores_formulario[5])
+                                              valores_formulario[1],
+                                              valores_formulario[2],
+                                              valores_formulario[3],
+                                              valores_formulario[4],
+                                              valores_formulario[5])
 
     return render_template('index.html',
                            Resultado=resultado,
-                           texto = Explicacao_geral,
-                           texto1 = Explicacao_ddd,
-                           texto2 = Explicacao_rn_rop
+                           texto=Explicacao_geral,
+                           texto1=Explicacao_ddd,
+                           texto2=Explicacao_rn_rop
                            )

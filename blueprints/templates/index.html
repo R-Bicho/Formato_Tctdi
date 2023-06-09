@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href=" {{url_for('static', filename ='style.css')}}">
+    <script src="{{url_for('static', filename='main.js')}}"></script>
     <title>{{titulo}}</title>
 </head>
 
@@ -28,18 +29,18 @@
                 <div>
                     <br>
                     <p>Categoria da Origem</p>
-                    <input type="radio" id="pre" name="valor" value="pre">
+                    <input type="radio" id="pre" name="valor" value="pre" onclick="text(0)">
                     <label for="pre">Pré-Pago</label>
                     <br>
-                    <input type="radio" id="pos" name="valor" value="pos">
+                    <input type="radio" id="pos" name="valor" value="pos" onclick="text(1)">
                     <label for="pos">Pós-Pago</label>
                     <br>
-                    <input type="radio" id="fixo" name="valor" value="fixo">
+                    <input type="radio" id="fixo" name="valor" value="fixo" onclick="text(2)">
                     <label for="fixo">Fixo</label>
                     <br>
                 </div>
 
-                <div class="posicionamento__filho">
+                <div class="posicionamento__filho" id="hidden_numeroA">
                     <div>
                         <label for="numeroA">Numero de A </label>
                     </div>
@@ -47,7 +48,7 @@
                         placeholder="11 99999-9999 / 11 9999-9999" />
                 </div>
 
-                <div class="posicionamento__filho">
+                <div class="posicionamento__filho" id="hidden_numeroB">
                     <div>
                         <label for="numeroB">Numero de B </label>
                     </div>
@@ -55,14 +56,14 @@
                         placeholder="11 99999-9999 / 11 9999-9999" />
                 </div>
 
-                <div class="posicionamento__filho">
+                <div class="posicionamento__filho" id="hidden_ddd">
                     <div>
                         <label for="ea">DDD Registrado </label>
                     </div>
                     <input class="tamanho__input__menor" type="tel" id="ea" name="ddd" placeholder="11" />
                 </div>
 
-                <div class="posicionamento__filho">
+                <div class="posicionamento__filho" id="hidden_bo">
                     <br>
                     <label for="BO">BO: </label>
                     <select id="BO" name="bo">
@@ -72,16 +73,16 @@
                     <br>
                 </div>
 
-                <div class="posicionamento__filho">
+                <div class="posicionamento__filho" id="hidden_rn">
                     <div>
                         <label for="rn">RN de B </label>
                     </div>
                     <input class="tamanho__input__menor" type="tel" id="rn" name="rn" placeholder="AA123" />
                 </div>
 
-                <div class="posicionamento__filho">
+                <div class="posicionamento__filho" id="hidden_rop">
                     <div>
-                        <label for="rop">ROP de A </label>
+                        <label for="rop">ROP A</label>
                     </div>
                     <input class="tamanho__input__menor" type="tel" id="rop" name="rop" placeholder="00000" />
                 </div>
