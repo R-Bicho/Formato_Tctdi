@@ -30,17 +30,15 @@ class telefoneFixo(validacao):
             return 'Selecione o campo de fixo em categoria origem'
 
         if validacao_rn is False or validacao_rop is False:
-            return 'Verifique RN/ROP'
+            return 'Verifique RN/ROP'        
+        
+        if  Telefone_validoB[0:4] == '0800':            
+            return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={rn_valido} {self.rop} {Telefone_validoB}, ea={Telefone_validoA[0:2]}, cl=1, tmr=0;'
 
-        if self.ddd_registrado != '':
-            return 'Cliente não pode usar fora da Home Zone'
-
-        if self.ddd_registrado == '' and prefixo_A_igual_B is True:
-            #  Campo ddd_registrado em branco e A é igual ao de B, chamada local
+        if prefixo_A_igual_B is True:
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={rn_valido} {self.rop} {Telefone_validoB[2:]}, ea={Telefone_validoA[0:2]}, cl=1, tmr=0;'
 
-        if self.ddd_registrado == '' and prefixo_A_igual_B is False:
-            #  Campo ddd_registrado em branco e o DDD de A é diferente do de B, chamada LD
+        if prefixo_A_igual_B is False:
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={rn_valido} {self.rop} 041{Telefone_validoB}, ea={Telefone_validoA[0:2]}, cl=1, tmr=0;'
 
     def __str__(self) -> str:
