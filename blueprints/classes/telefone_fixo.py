@@ -16,20 +16,15 @@ class telefoneFixo(validacao):
 
         rn_valido = self.rn.upper()
         #  Altera o caracter A para #10
-        rn_valido = self.rn.replace('A', '#10')
-
-        #  Valida se o ROP e o RN foram preenchidos com cinco digitos
-        #  ou se utilizaram espaço para preencher'''
-        validacao_rn = self.rn.strip() != '' and len(self.rn) == 5
-        validacao_rop = self.rop.strip != '' and len(self.rop) == 5
-
+        rn_valido = self.rn.replace('A', '#10')               
+        
         #  Compara o DDD da origem com o DDD do destino
         prefixo_A_igual_B = self.telefoneA[0:2] == self.telefoneB[0:2]
 
         if self.bo != '445':
             return 'Selecione o campo de fixo em categoria origem'
 
-        if validacao_rn is False or validacao_rop is False:
+        if self.validacaoRN() is False or self.validacaoROP() is False:
             return 'Verifique RN/ROP'        
         
         if  Telefone_validoB[0:4] == '0800':            

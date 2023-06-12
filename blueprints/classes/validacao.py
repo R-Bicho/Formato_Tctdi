@@ -38,7 +38,7 @@ class validacao:
 
         if rn_regexp.search(self.rn) and len(self.rn) == 5:
             return True
-        return False
+        return False   
 
 
     def validacaoROP(self) -> bool:
@@ -47,6 +47,7 @@ class validacao:
         if rop_regexp.search(self.rop):
             return True
         return False
+    
 
     def TelefoneSemCaracterEspecial(self) -> tuple:
         Telefone_validoA = ''
@@ -59,7 +60,6 @@ class validacao:
         for valor in self.telefoneB:
             if valor != ' ' and valor != '-':
                 Telefone_validoB += valor
-
         
         return Telefone_validoA, Telefone_validoB   
 

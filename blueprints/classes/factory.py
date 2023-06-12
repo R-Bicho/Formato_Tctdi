@@ -23,8 +23,3 @@ class tctdiFactory:
                                       bo, rn, rop)
             
 
-        
-
-
-if __name__ == '__main__':
-    tctdiFactory.criaFormatoTctdi('1185235500','11985235500', '12', '376','AA123','00000')

@@ -10,5 +10,5 @@ instance/
 .dmypy.json
 dmypy.json
 
-
+.env
 
