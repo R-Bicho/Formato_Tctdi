@@ -6,11 +6,8 @@ class volte(validacao):
 
     def __init__(self, telefoneA='', telefoneB='', ddd_registrado='',bo='', rn='', rop=''):
         super().__init__(telefoneA, telefoneB, ddd_registrado, bo, rn, rop)
-         
-        print(self.TctdiVolte())  
-        for valor in self.getDB():
-            print(valor)
-               
+
+
     def TctdiVolte(self):
         #  Compara o DDD da origem com o DDD do destino
         prefixo_A_igual_B = self.telefoneA[0:2] == self.telefoneB[0:2]  
@@ -66,8 +63,8 @@ class volte(validacao):
                 if regiao[0] == '9':
                     return self.regiao9xLocal()
                 
-                formato1 = f'Site: {site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=0 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
-                formato2 = f'Site: {site2}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=0 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
+                formato1 = f'{site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=0 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
+                formato2 = f'{site2}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=0 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
                 return f'{formato1}\n\n{formato2}'
             contador += 1
     
@@ -83,10 +80,10 @@ class volte(validacao):
                     return f'Site: {site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=041 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
                 
                 if regiao[0] == '9':
-                    return self.regiao9xLD()
-
-                formato1 = f'Site: {site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=041 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
-                formato2 = f'Site: {site2}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=041 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
+                    return self.regiao9xLD()               
+                
+                formato1 = f'{site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=041 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
+                formato2 = f'{site2}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=041 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
                 return f'{formato1}\n\n{formato2}'
             contador += 1
             
@@ -96,7 +93,7 @@ class volte(validacao):
         for tupla in self.getDB():            
             if tupla[0] == self.telefoneB[0:2]:
                 _, site1, _, bo1, _, bnt = self.getDB()[contador]
-                return f'Site: {site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb={self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
+                return f'{site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb={self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
             contador += 1
 
     def regiao9xLD(self):
@@ -105,14 +102,13 @@ class volte(validacao):
         for tupla in self.getDB():            
             if tupla[0] == self.telefoneB[0:2]:
                 _, site1, _, bo1, _, bnt = self.getDB()[contador]
-                return f'Site: {site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=041 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
+                return f'{site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=041 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
             contador += 1
 
-
-valor = volte(telefoneA='13985235500',
-              telefoneB='99985235500',
-              rn='AA123', 
-              rop='00000',
-              ddd_registrado='')       
+    def __str__(self) -> str:
+        return self.TctdiVolte()
+    
+    
+    
     
     

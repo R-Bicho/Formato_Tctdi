@@ -13,11 +13,20 @@ function text(x) {
         document.getElementById("hidden_bo").style.display = "none";
         document.getElementById("hidden_ddd").style.display = "block";
 
-    } else if (x == 2) {
+    } 
+    else if (x == 2) {
         document.getElementById("hidden_rn").style.display = "block";
         document.getElementById("hidden_rop").style.display = "block";
         document.getElementById("hidden_bo").style.display = "none";
         document.getElementById("hidden_ddd").style.display = "none";
     }
+    else if (x == 3) {
+        document.getElementById("hidden_rn").style.display = "block";
+        document.getElementById("hidden_rop").style.display = "block";
+        document.getElementById("hidden_bo").style.display = "none";
+        document.getElementById("hidden_ddd").style.display = "block";
+    }
+
+    
     return;
 }

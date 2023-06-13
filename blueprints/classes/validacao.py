@@ -46,9 +46,8 @@ class validacao:
 
         if rop_regexp.search(self.rop):
             return True
-        return False
-    
-
+        return False   
+   
     def TelefoneSemCaracterEspecial(self) -> tuple:
         Telefone_validoA = ''
         Telefone_validoB = ''
