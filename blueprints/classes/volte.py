@@ -1,5 +1,5 @@
 from blueprints.classes.validacao import validacao
-from banco_dados import conexaoBanco
+from ext.banco_dados import conexaoBanco
 
 
 class volte(validacao):
