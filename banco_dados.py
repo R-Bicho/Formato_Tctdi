@@ -1,5 +1,5 @@
 import psycopg2 as db
-from ext.config.db_values import database_infos
+from db_values import database_infos
 
 
 def conexaoBanco():    
