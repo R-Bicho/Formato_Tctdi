@@ -88,7 +88,7 @@ def resultado():
                            texto2=Explicacao_rn_rop
                            )
         site1, site2, formato1, formato2 = teste
-        site1 = f'Site: {site2}'
+        site1 = f'Site: {site1}'
         site2 = f'Site: {site2}' 
         
         return render_template('index.html',

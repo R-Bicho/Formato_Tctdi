@@ -58,7 +58,7 @@ class volte(validacao):
                 regiao, site1, site2, bo1, _, bnt = self.getDB()[contador]
 
                 if regiao =='5X':
-                    return f'Site: {site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=0 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
+                    return f'{site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=0 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
                 
                 if regiao[0] == '9':
                     return self.regiao9xLocal()
@@ -77,7 +77,7 @@ class volte(validacao):
                 regiao, site1, site2, bo1, _, bnt = self.getDB()[contador]
 
                 if regiao =='5X':
-                    return f'Site: {site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=041 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
+                    return f'{site1}\ntctdi:bo={bo1}, bnt={bnt}, anb={Telefone_validoA}, bnb=041 {self.conversaoRN()} {self.rop} {Telefone_validoB}, cl=1;'
                 
                 if regiao[0] == '9':
                     return self.regiao9xLD()               
@@ -106,9 +106,6 @@ class volte(validacao):
             contador += 1
 
     def __str__(self) -> str:
-        return self.TctdiVolte()
-    
-    
-    
-    
+        return self.TctdiVolte()    
+
     
