@@ -42,15 +42,15 @@ def validar():
     valores_formulario.append(numeroB)
     valores_formulario.append(ddd_registrado)
 
-    match tipo_telefone:
-        case "pos":
-            bo = '306'
-            valores_formulario.append(bo)
-        case "fixo":
+    if tipo_telefone == "pos":        
+        bo = '306'
+        valores_formulario.append(bo)
+
+    elif tipo_telefone == "fixo":
             bo = '445'
             valores_formulario.append(bo)         
-        case _:
-            valores_formulario.append(bo)            
+    else:
+        valores_formulario.append(bo)            
 
     valores_formulario.append(rn)
     valores_formulario.append(rop)
