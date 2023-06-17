@@ -25,6 +25,8 @@ class tctdiFactory:
         if validando.validacaoTelefone() == True and len(validando.TelefoneSemCaracterEspecial()[0]) == 10 and validando.validacaoDDD() == True and validando.validacaoRN() == True and validando.validacaoROP() == True:            
             return telefoneFixo(telefoneA, telefoneB, ddd_registrado,
                                       bo, rn, rop)
+        
+        return 'Verifique as informações digitadas'
             
         
 

@@ -9,12 +9,21 @@ class telefoneMovel(validacao):
                 
         prefixo_A_igual_B = self.telefoneA[0:2] == self.telefoneB[0:2]
 
+        #  --Retorna comando para chamadas internacionais
+        if Telefone_validoB[0] == '+' and self.ddd_registrado == '':
+            return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb=0041 {Telefone_validoB[1:]}, ea={Telefone_validoA[0:2]};'
+        
+        if Telefone_validoB[0] == '+' and self.ddd_registrado == '':
+            return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb=0041 {Telefone_validoB[1:]}, ea={self.ddd_registrado};'
+
+        #  --Retorna comando para chamadas 0800
         if self.ddd_registrado == '' and Telefone_validoB[0:4] == '0800':
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={Telefone_validoB}, ea={Telefone_validoA[0:2]};'
         
         if self.ddd_registrado != '' and Telefone_validoB[0:4] == '0800':
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={Telefone_validoB}, ea={self.ddd_registrado};'
 
+        #  --Retorna comando para chamadas nacionais
         if self.ddd_registrado == '' and prefixo_A_igual_B is True:
             #  Campo ddd_registrado em branco e DDD A é igual ao de B, chamada local
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={Telefone_validoB[2:]}, ea={Telefone_validoA[0:2]};'

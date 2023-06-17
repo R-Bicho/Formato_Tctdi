@@ -3,9 +3,7 @@ from ext.db_values import database_infos
 
 
 def conexaoBanco():    
-    conexão = db.connect(database_infos.get('database'), 
-                     )
-    
+    conexão = db.connect(database_infos.get('database'))    
     return conexão
 
 
