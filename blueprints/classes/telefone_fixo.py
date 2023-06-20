@@ -21,6 +21,10 @@ class telefoneFixo(validacao):
         #  Compara o DDD da origem com o DDD do destino
         prefixo_A_igual_B = self.telefoneA[0:2] == self.telefoneB[0:2]      
 
+
+        if Telefone_validoB[0] == '+':
+            return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb=0041 {rn_valido} {self.rop} {Telefone_validoB[1:]}, ea={Telefone_validoA[0:2]}, cl=1, tmr=0;'
+   
         if  Telefone_validoB[0:4] == '0800':            
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb={rn_valido} {self.rop} {Telefone_validoB}, ea={Telefone_validoA[0:2]}, cl=1, tmr=0;'
 

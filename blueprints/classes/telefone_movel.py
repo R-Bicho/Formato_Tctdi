@@ -13,7 +13,7 @@ class telefoneMovel(validacao):
         if Telefone_validoB[0] == '+' and self.ddd_registrado == '':
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb=0041 {Telefone_validoB[1:]}, ea={Telefone_validoA[0:2]};'
         
-        if Telefone_validoB[0] == '+' and self.ddd_registrado == '':
+        if Telefone_validoB[0] == '+' and self.ddd_registrado != '':
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb=0041 {Telefone_validoB[1:]}, ea={self.ddd_registrado};'
 
         #  --Retorna comando para chamadas 0800

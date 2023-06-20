@@ -12,6 +12,10 @@ class volte(validacao):
         prefixo_A_igual_B = self.telefoneA[0:2] == self.telefoneB[0:2]             
         Telefone_validoA, Telefone_validoB = self.TelefoneSemCaracterEspecial()
 
+        if Telefone_validoB[0] == '+':
+            return self.retornoVolte(formato_chamada='0041', 
+                                     regiao_chamada=self.telefoneA[0])
+
         if self.telefoneB[0:4] == '0800' and self.ddd_registrado != '':
             return self.retornoVolte(formato_chamada='041', 
                                      regiao_chamada=self.ddd_registrado[0])
@@ -60,10 +64,13 @@ class volte(validacao):
     
     def retornoVolte(self, formato_chamada, regiao_chamada):
         Telefone_validoA, Telefone_validoB = self.TelefoneSemCaracterEspecial()
+
+        if Telefone_validoB[0] == '+':
+            Telefone_validoB = Telefone_validoB[1:]
         
         contador = 0
         for tupla in self.getDB():            
-            if tupla[0][0] == regiao_chamada: #Telefone_validoB[0]
+            if tupla[0][0] == regiao_chamada:
                 regiao, site1, site2, bo1, bo2, bnt = self.getDB()[contador]
 
                 if regiao == '4X' or regiao == '8X':

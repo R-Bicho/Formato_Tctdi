@@ -13,10 +13,10 @@ class validacao:
         
     def validacaoTelefone(self) -> bool:        
 
-        telefone_regexp = re.compile(r'^([0-9]{2}) ?([0-9]{4,5})-?([0-9]{4})$')
-        telefone_0800 = re.compile(r'^(0800) ?([0-9]{3}) ?([0-9]{4})$')
-        telefone_internacional = re.compile(r'^\+ ?(\(?[0-9]{1,3}\)?) ?([0-9]{1,3}) ?([0-9]{4,10})$')
-
+        telefone_regexp = re.compile(r'^([0-9]{2}) ?([0-9]{4,5})-?([0-9]{4}) ?$')
+        telefone_0800 = re.compile(r'^(0800) ?([0-9]{3}) ?([0-9]{4} ?)$')
+        telefone_internacional = re.compile(r'^\+ ?([0-9]{1,3}) ?(\(?[0-9]{1,3}\)?) ?([0-9]{4,10}) ?$')
+        
         if telefone_regexp.search(self.telefoneA) and telefone_regexp.search(self.telefoneB):
             return True
         
@@ -61,7 +61,7 @@ class validacao:
                 Telefone_validoA += valor
 
         for valor in self.telefoneB:
-            if valor != ' ' and valor != '-':
+            if valor != ' ' and valor != '-' and valor != '(' and valor != ')':
                 Telefone_validoB += valor
         
         return Telefone_validoA, Telefone_validoB   
