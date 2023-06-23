@@ -19,7 +19,7 @@ main{
 
 .posicionamento{
     display: flex;   
-    justify-content:space-around;  
+    justify-content:left;  
     flex-wrap: wrap; 
     margin-bottom: 1%;    
 }
