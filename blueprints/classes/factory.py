@@ -19,7 +19,7 @@ class tctdiFactory:
         
         if validando.validacaoTelefone() == True and len(validando.TelefoneSemCaracterEspecial()[0]) == 11 and validando.validacaoDDD() == True:
             return telefoneMovel(telefoneA, telefoneB, ddd_registrado,
-                                      bo)
+                                      bo, tipo_chamada = tipo_chamada)
             
         
         if validando.validacaoTelefone() == True and len(validando.TelefoneSemCaracterEspecial()[0]) == 10 and validando.validacaoDDD() == True and validando.validacaoRN() == True and validando.validacaoROP() == True:            
