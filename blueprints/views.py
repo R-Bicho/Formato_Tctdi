@@ -1,5 +1,4 @@
 from flask import Blueprint, redirect, render_template, request
-
 from blueprints.classes.factory import tctdiFactory, volte
 from blueprints.textos.textos_rotas import *
 
@@ -7,7 +6,7 @@ bp_tctdi = Blueprint("tctdi", __name__, template_folder='templates')
 
 valores_formulario = []
 
-@bp_tctdi.route("/")
+@bp_tctdi.route("/tctdi")
 def index():
 
     return render_template('index.html',
@@ -25,12 +24,12 @@ def validar():
     try:
         tipo_telefone = request.form['valor']
     except KeyError:
-        return redirect('/')
+        return redirect('/tctdi')
 
     numeroA = request.form['numeroA']
 
     if tipo_telefone == "fixo" and len(numeroA) > 10:
-        return redirect('/')
+        return redirect('/tctdi')
 
     numeroB = request.form['numeroB']
     ddd_registrado = request.form['ddd']

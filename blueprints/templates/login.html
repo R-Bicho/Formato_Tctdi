@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename ='style_login.css')}}">
     <title>Tela Login</title>
 </head>
 
@@ -29,8 +29,8 @@
         </form>
         
         <div class="centralizar">
-            <a href="{{url_for('cadastro')}}">Cadastre-se</a>
-            <a href="{{url_for('senha')}}">Esqueci a senha</a>
+            <a href="{{url_for('login.cadastro')}}">Cadastre-se</a>
+            <a href="{{url_for('login.senha')}}">Esqueci a senha</a>
         </div>
 
         <p>{{matricula}}</p>
