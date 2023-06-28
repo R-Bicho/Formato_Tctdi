@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <header>
+        <img src="/static/Logo.png">
+    </header>
+    <main>    
+        <h1 class="centralizar" >Cadastro</h1>
+
+        <form id="form_cadastro" action="/validar-cadastro" method="post">
+            <div>
+                <label>Matricula</label>
+                <input type="text" name="matricula" placeholder="F8012123">
+
+            </div>
+            <div>
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="name@timbrasil.com.br">
+            </div>
+
+            <div>
+                <label>Senha</label>
+                <input name="senha" type="password">
+            </div>
+
+            <div>
+                <label>Confirmar Senha</label>
+                <input name="confirmar_senha" type="password">
+            </div>            
+            <input type="submit" value="Enviar">
+        </form>
+        <a class="centralizar" href="{{url_for('index')}}">Voltar</a>
+        <p>{{retorno}}</p>
+    </main>
+    <footer>&copy;Rogério Bicho</footer>
+</body>
+
+</html>

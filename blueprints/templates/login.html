@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Tela Login</title>
+</head>
+
+<body>
+    <header>
+        <img src="/static/Logo.png">
+    </header>
+    <main>
+        <h1 class="centralizar">Login</h1>
+        <form action="/validar-login" method="post">
+            <div>
+                <label class="labels">Matricula</label>
+                <input type="text" name="matricula" placeholder="F8012123">
+            </div>
+
+            <div>
+                <label>Senha</label>
+                <input name="senha" type="password">
+            </div>
+
+            <input type="submit" value="Enviar">
+        </form>
+        
+        <div class="centralizar">
+            <a href="{{url_for('cadastro')}}">Cadastre-se</a>
+            <a href="{{url_for('senha')}}">Esqueci a senha</a>
+        </div>
+
+        <p>{{matricula}}</p>
+        <p>{{senha}}</p>
+    </main>
+    <footer>&copy;Rogério Bicho</footer>
+</body>
+
+
+</html>

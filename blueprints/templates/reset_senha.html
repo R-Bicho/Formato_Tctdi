@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Reset Senha</title>
+</head>
+
+<body>
+    <header>
+        <img src="/static/Logo.png">
+    </header>    
+    <main>
+        <h1 class="centralizar" >Reset Senha</h1>
+
+        <form id="form_senha" action="/validar-email" method="post">
+            <div>
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="name@timbrasil.com.br">
+            </div>
+
+            <input type="submit" value="Enviar">
+
+            <p>{{email}}</p>
+        </form>
+        <a class="centralizar" href="{{url_for('index')}}">Voltar</a>
+
+    </main>
+    <footer>&copy;Rogério Bicho</footer>
+</body>
+
+</html>

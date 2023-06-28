@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+header{
+    text-align: center;
+    margin: 5%;
+    margin-bottom: 7%;
+}
+
+main{
+    background-color: rgba(129, 160, 219, 0.9);
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 80px;
+    border-radius: 15px;
+    color: black;
+    margin-bottom: 20%;
+}
+
+.centralizar{
+    text-align: center;     
+}
+
+input{
+    display: block;
+    margin: 10px auto;
+    margin-top: 0;
+    width: 250px;
+    height: 30px;
+}
+
+footer{
+    text-align: center;  
+    position: absolute; 
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%,-50%); 
+}
