@@ -2,6 +2,7 @@ from email.message import EmailMessage
 import ssl
 import smtplib
 from ext.email_values import email_infos
+import re
 
 def enviandoEmail(email_destino, senha_temporaria):
 
@@ -27,3 +28,14 @@ def enviandoEmail(email_destino, senha_temporaria):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as smtp:
         smtp.login(email_sender, password)
         smtp.sendmail(email_sender, email_reciver,em.as_string())
+
+
+def validandoEmail(email):
+    #email_regexp = re.compile(r'^[A-Za-z]*@timbrasil\.com\.br$')
+    #email_regexp = re.compile(r'^[A-Za-z]*-([A-Za-z]*)? @outlook\.com$')
+
+    #if email_regexp.search(email):
+        #return True
+    #return False
+    return True
+

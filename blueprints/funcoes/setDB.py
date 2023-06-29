@@ -14,7 +14,6 @@ def updateSenhaDB(senha, email):
     comando_senha = f'UPDATE login SET senha = %s WHERE email= %s;'
     informação = (senha, email)   
     cur.execute(comando_senha, informação)
-
     comando_senha_temporaria = f'UPDATE login SET senha_temporaria = %s WHERE email= %s;'
     informação2 = ('null', email) 
     cur.execute(comando_senha_temporaria, informação2) 
@@ -26,7 +25,6 @@ def updateSenhaTemporaria(senha_temporaria, email):
     comando_senha_temporaria = f'UPDATE login SET senha_temporaria = %s WHERE email= %s;'
     informação = (senha_temporaria, email)   
     cur.execute(comando_senha_temporaria, informação)
-
     comando_senha = f'UPDATE login SET senha = %s WHERE email= %s;'
     informação2 = ('null', email)
     cur.execute(comando_senha, informação2)    

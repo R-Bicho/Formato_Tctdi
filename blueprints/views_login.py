@@ -1,10 +1,10 @@
 from flask import Flask, Blueprint, render_template, request, redirect
 from blueprints.classes.gerador_senha import retornoSenha
-from blueprints.funcoes.setDB import setDB, updateSenhaDB
+from blueprints.funcoes.setDB import setDB, updateSenhaDB, updateSenhaTemporaria
 from blueprints.funcoes.valoresDB import MatriculaDB, senhaDB,senhaTemporariaDB
 from blueprints.funcoes.valoresDB import emailPorMatricula
-from blueprints.funcoes.send_email import enviandoEmail
-import re
+from blueprints.funcoes.send_email import enviandoEmail, validandoEmail
+
 
 bp_login = Blueprint("login", __name__, template_folder='templates')
 
@@ -39,7 +39,7 @@ def primeiroAcesso():
 def validarPrimeiroAcesso():
     senha_temporaria = request.form['senha_temporaria']
     senha = request.form['nova_senha']
-    nova_senha = request.form['nova_senha']
+    nova_senha = request.form['confirmar_senha']
     matricula = ''.join(valor_matricula)
 
     email = emailPorMatricula(matricula)    
@@ -47,6 +47,10 @@ def validarPrimeiroAcesso():
     if senhaTemporariaDB(matricula) == senha_temporaria and senha == nova_senha:
         updateSenhaDB(senha, email)
         return redirect('/login')
+    
+    if len(senha) > 8:
+        return render_template('primeiro_acesso.html', 
+                               mensagem = 'Senha deve ter no maximo 8 caracteres')
 
     if senhaTemporariaDB(matricula) == senha_temporaria and senha != nova_senha:
         return render_template('primeiro_acesso.html', 
@@ -68,29 +72,30 @@ def validarCadastro():
     senha_temporaria = retornoSenha()
     senha_temporaria = str(senha_temporaria)
 
+    if validandoEmail(email) is False:
+        return redirect('/cadastro')
+
     setDB(matricula, email, senha_temporaria)
     enviandoEmail(email, senha_temporaria)    
     return redirect('/login')
 
 
 @bp_login.route('/reset-senha')
-def senha():
+def resetSenha():
     return render_template('reset_senha.html')
 
 @bp_login.route('/validar-email', methods=['POST',])
-def validarSenha():
-    email = request.form['email']    
+def validarEmail():
+    email = request.form['email']   
 
-    email_regexp = re.compile(r'^[A-Za-z]*@timbrasil\.com\.br$')
-
-    if email_regexp.search(email):
+    if validandoEmail(email):
+        senha_temporaria = retornoSenha()
+        senha_temporaria = str(senha_temporaria)
+        enviandoEmail(email, senha_temporaria)
+        updateSenhaTemporaria(senha_temporaria, email)
         return redirect('/nova-senha')
     return render_template('reset_senha.html', email='Verificar e-mail')
 
 @bp_login.route('/nova-senha')
-def senha1():
-    return render_template('nova_senha.html')
-
-
-if __name__=='__main__':
-    bp_login.run(debug=True)
+def novaSenha():
+    return render_template('primeiro_acesso.html')
