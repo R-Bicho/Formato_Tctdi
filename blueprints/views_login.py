@@ -1,10 +1,14 @@
 from flask import Flask, Blueprint, render_template, request, redirect
-#from gerador_senha import retornoSenha
-from blueprints.funcoes.setdb import setDB
+from blueprints.classes.gerador_senha import retornoSenha
+from blueprints.funcoes.setDB import setDB, updateSenhaDB
+from blueprints.funcoes.valoresDB import MatriculaDB, senhaDB,senhaTemporariaDB
+from blueprints.funcoes.valoresDB import emailPorMatricula
+from blueprints.funcoes.send_email import enviandoEmail
 import re
 
 bp_login = Blueprint("login", __name__, template_folder='templates')
 
+valor_matricula = []
 
 @bp_login.route('/')
 @bp_login.route('/login')
@@ -14,11 +18,43 @@ def index():
 @bp_login.route('/validar-login', methods=['POST',])
 def validarLogin():
     matricula = request.form['matricula']
+    matricula.upper()
     senha = request.form['senha']
-    
+
+    if MatriculaDB(matricula) is True and senhaDB(senha) is True:
+        return redirect('/tctdi')
+        
+    if MatriculaDB(matricula) is True and senhaDB(senha) is False:
+        valor_matricula.append(matricula) 
+        return redirect('/primeiro-acesso')
+       
     return render_template('login.html',
-                           matricula = matricula,
-                           senha = senha)
+                           mensagem = 'Verifique os valores digitados')
+
+@bp_login.route('/primeiro-acesso')
+def primeiroAcesso():
+    return render_template('primeiro_acesso.html')
+
+@bp_login.route('/validar-senha', methods=['POST',])
+def validarPrimeiroAcesso():
+    senha_temporaria = request.form['senha_temporaria']
+    senha = request.form['nova_senha']
+    nova_senha = request.form['nova_senha']
+    matricula = ''.join(valor_matricula)
+
+    email = emailPorMatricula(matricula)    
+
+    if senhaTemporariaDB(matricula) == senha_temporaria and senha == nova_senha:
+        updateSenhaDB(senha, email)
+        return redirect('/login')
+
+    if senhaTemporariaDB(matricula) == senha_temporaria and senha != nova_senha:
+        return render_template('primeiro_acesso.html', 
+                               mensagem = 'Senha deve ser igual a confirmação')
+    
+    if senhaTemporariaDB(matricula) != senha_temporaria:
+        return render_template('primeiro_acesso.html', 
+                               mensagem = 'Senha temporaria deve ser igual a do e-mail')
 
 
 @bp_login.route('/cadastro')
@@ -29,16 +65,12 @@ def cadastro():
 def validarCadastro():
     matricula = request.form['matricula']
     email = request.form['email']
-    senha = request.form['senha']
-    confirmar_senha = request.form['confirmar_senha']
+    senha_temporaria = retornoSenha()
+    senha_temporaria = str(senha_temporaria)
 
-    if senha == confirmar_senha:
-        setDB(matricula, email, senha)
-        return render_template('cadastro.html',
-                               retorno = 'Sucesso')
-
-    return render_template('cadastro.html',
-                           retorno = 'Verifique os valores digitados')
+    setDB(matricula, email, senha_temporaria)
+    enviandoEmail(email, senha_temporaria)    
+    return redirect('/login')
 
 
 @bp_login.route('/reset-senha')

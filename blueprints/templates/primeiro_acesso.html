@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename ='style_login.css')}}">
-    <title>Alterar Senha</title>
+    <title>Primeiro Acesso</title>
 </head>
 
 <body>
@@ -13,9 +13,9 @@
         <img src="{{url_for('static', filename ='Logo.png')}}">
     </header>
     <main>    
-        <h1 class="centralizar">Alterar Senha</h1>
+        <h1 class="centralizar">Primeiro Acesso</h1>
 
-        <form id="form_cadastro" action="/validar-senhaa" method="post">
+        <form id="form_cadastro" action="/validar-senha" method="post">
 
             <div>
                 <label>Senha Temporaria</label>
@@ -34,7 +34,7 @@
             <input type="submit" value="Enviar">
         </form>
         <a class="centralizar" href="{{url_for('login.senha')}}">Voltar</a>
-        <p>{{retorno}}</p>
+        <p>{{mensagem}}</p>
     </main>
     <footer>&copy;Rogério Bicho</footer>
 </body>
