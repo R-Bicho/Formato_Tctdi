@@ -95,9 +95,5 @@ def validarEmail():
         senha_temporaria = str(senha_temporaria)
         enviandoEmail(email, senha_temporaria)
         updateSenhaTemporaria(senha_temporaria, email)
-        return redirect('/nova-senha')
+        return redirect('/login')
     return render_template('reset_senha.html', email='Verificar e-mail')
-
-@bp_login.route('/nova-senha')
-def novaSenha():
-    return render_template('primeiro_acesso.html')
