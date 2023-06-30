@@ -22,8 +22,8 @@ main{
     top: 55%;
     left: 50%;
     transform: translate(-50%,-50%);
-    padding: 80px;
-    border-radius: 15px;
+    padding: 5rem;
+    border-radius: 0.938rem;
     color: black;
     margin-bottom: 20%;
 }
@@ -34,10 +34,10 @@ main{
 
 input{
     display: block;
-    margin: 10px auto;
+    margin: 0.625rem auto;
     margin-top: 0;
-    width: 250px;
-    height: 30px;
+    width: 15.625rem;
+    height: 1.875rem;
 }
 
 footer{

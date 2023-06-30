@@ -1,6 +1,7 @@
 from flask import Blueprint, redirect, render_template, request
 from blueprints.classes.factory import tctdiFactory, volte
 from blueprints.textos.textos_rotas import *
+from blueprints.views_login import usuario_logado
 
 bp_tctdi = Blueprint("tctdi", __name__, template_folder='templates')
 
@@ -8,12 +9,14 @@ valores_formulario = []
 
 @bp_tctdi.route("/tctdi")
 def index():
-
-    return render_template('index.html',
-                           titulo=titulo,
-                           texto=Explicacao_geral,
-                           texto1=Explicacao_ddd,
-                           texto2=Explicacao_rn_rop)
+    for validacao in usuario_logado:
+        if validacao is True:    
+            return render_template('index.html',
+                                titulo=titulo,
+                                texto=Explicacao_geral,
+                                texto1=Explicacao_ddd,
+                                texto2=Explicacao_rn_rop)
+    return redirect('/login')
 
 
 @bp_tctdi.route('/validar', methods=['POST', ])

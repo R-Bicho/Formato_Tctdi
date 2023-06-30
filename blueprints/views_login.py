@@ -9,6 +9,7 @@ from blueprints.funcoes.send_email import enviandoEmail, validandoEmail
 bp_login = Blueprint("login", __name__, template_folder='templates')
 
 valor_matricula = []
+usuario_logado = []
 
 @bp_login.route('/')
 @bp_login.route('/login')
@@ -22,6 +23,7 @@ def validarLogin():
     senha = request.form['senha']
 
     if MatriculaDB(matricula) is True and senhaDB(senha) is True:
+        usuario_logado.append(True)
         return redirect('/tctdi')
         
     if MatriculaDB(matricula) is True and senhaDB(senha) is False:
