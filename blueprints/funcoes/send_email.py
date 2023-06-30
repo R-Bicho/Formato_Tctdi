@@ -31,8 +31,7 @@ def enviandoEmail(email_destino, senha_temporaria):
 
 
 def validandoEmail(email):
-    email_regexp = re.compile(r'^[A-Za-z]*@timbrasil\.com\.br$')
-    email_regexp = re.compile(r'^[A-Za-z]*-([A-Za-z]*)? @outlook\.com$')
+    email_regexp = re.compile(r'^[A-Za-z]*@timbrasil\.com\.br$')    
 
     if email_regexp.search(email):
         return True
