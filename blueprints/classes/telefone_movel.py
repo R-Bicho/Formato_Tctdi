@@ -47,6 +47,11 @@ class telefoneMovel(validacao):
             #  Campo ddd_registrado preenchido e o numero digitado é diferente
             #  do DDD cadastrado, chamada é LD
             return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb=041{Telefone_validoB}, ea={self.ddd_registrado}, cl={valor_CL};'
+        
+        if self.ddd_registrado != '' and prefixo_A_igual_B is False:
+            #  Campo ddd_registrado preenchido e o numero digitado é diferente
+            #  do DDD cadastrado, chamada é LD
+            return f'tctdi:bo={self.bo}, anb={Telefone_validoA}, bnb=041{Telefone_validoB}, ea={self.ddd_registrado}, cl={valor_CL};'
         return 'erro inesperado'
     
     def __str__(self) -> str:

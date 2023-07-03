@@ -67,3 +67,17 @@ class validacao:
         return Telefone_validoA, Telefone_validoB   
 
 
+    def validacaoTelefoneMovel(self):
+        if self.validacaoTelefone() == True and len(self.TelefoneSemCaracterEspecial()[0]) == 11 and self.validacaoDDD() == True:
+            return True
+        return False
+    
+    def validacaoTelefoneFixo(self):
+        if self.validacaoTelefone() == True and len(self.TelefoneSemCaracterEspecial()[0]) == 10 and self.validacaoDDD() == True and self.validacaoRN() == True and self.validacaoROP() == True:
+            return True
+        return False
+    
+    def validacaoVolte(self):
+        if self.validacaoTelefone() == True and self.validacaoDDD() == True and self.validacaoRN() == True and self.validacaoROP() == True:
+            return True
+        return False

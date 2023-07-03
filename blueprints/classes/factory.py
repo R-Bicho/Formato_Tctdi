@@ -13,16 +13,16 @@ class tctdiFactory:
         validando = validacao(telefoneA, telefoneB, ddd_registrado,
                                       bo, rn, rop)       
 
-        if tipo_chamada == "volte" and validando.validacaoTelefone() == True and validando.validacaoDDD() == True and validando.validacaoRN() == True and validando.validacaoROP() == True:            
+        if tipo_chamada == "volte" and validando.validacaoVolte() == True:            
             return volte(telefoneA, telefoneB, ddd_registrado,
                                       bo, rn, rop)
         
-        if validando.validacaoTelefone() == True and len(validando.TelefoneSemCaracterEspecial()[0]) == 11 and validando.validacaoDDD() == True:
+        if validando.validacaoTelefoneMovel():
             return telefoneMovel(telefoneA, telefoneB, ddd_registrado,
                                       bo, tipo_chamada = tipo_chamada)
             
         
-        if validando.validacaoTelefone() == True and len(validando.TelefoneSemCaracterEspecial()[0]) == 10 and validando.validacaoDDD() == True and validando.validacaoRN() == True and validando.validacaoROP() == True:            
+        if validando.validacaoTelefoneFixo():            
             return telefoneFixo(telefoneA, telefoneB, ddd_registrado,
                                       bo, rn, rop)
         
